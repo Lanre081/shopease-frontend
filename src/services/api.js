@@ -1,5 +1,4 @@
-//export const API_BASE = "/api";
-export const API_BASE = import.meta.env.VITE_API_BASE_URL || "/api";
+export const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://shopease-backend-qiz2.onrender.com/api";
 
 export async function apiRequest(path, { method = "GET", body, auth = false } = {}) {
   const headers = { "Content-Type": "application/json" };
