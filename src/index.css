@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FF6900;
+  --color-primary-hover: #E55E00;
+  --color-primary-light: #FFF3EB;
+  --color-secondary: #1a1a2e;
+  --color-accent: #FFD166;
+  --color-success: #10B981;
+  --color-danger: #EF4444;
+  --color-warning: #F59E0B;
+  --color-muted: #6B7280;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', system-ui, sans-serif;
+}
+
+:root {
+  --primary: #FF6900;
+  --primary-hover: #E55E00;
+  --primary-light: #FFF3EB;
+  --secondary: #1a1a2e;
+  --danger: #EF4444;
+  --success: #10B981;
+  --warning: #F59E0B;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #F3F4F6;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #f3f4f6; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* Line clamp */
+.line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; }
+.line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+
+/* Flash sale timer digits */
+.timer-digit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a2e;
+  color: #fff;
+  font-weight: 800;
+  font-family: 'Outfit', monospace;
+  border-radius: 4px;
+  min-width: 2rem;
+  padding: 0.125rem 0.25rem;
+}
+
+/* Product card hover lift */
+.product-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+/* Category card hover */
+.category-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* Skeleton loader animation */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s infinite linear;
+}
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Mobile drawer overlay */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 99;
+  animation: fadeIn 0.2s ease;
+}
+.drawer-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: min(320px, 85vw);
+  background: #fff;
+  z-index: 100;
+  animation: slideInLeft 0.25s ease;
+  overflow-y: auto;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideInLeft { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+
+/* Search suggestion dropdown */
+.search-suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  z-index: 200;
+  overflow: hidden;
+  animation: slideDown 0.15s ease;
+}
+@keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Announcement bar */
+.announcement-bar {
+  background: #1a1a2e;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 6px 0;
+  text-align: center;
+}
+
+/* Star rating */
+.star-filled { color: #F59E0B; }
+.star-empty { color: #D1D5DB; }
+
+/* Step indicator for checkout */
+.step-active { 
+  background: var(--primary); 
+  color: #fff; 
+  border-color: var(--primary); 
+}
+.step-done { 
+  background: var(--success); 
+  color: #fff; 
+  border-color: var(--success); 
+}
+.step-inactive { 
+  background: #fff; 
+  color: #9ca3af; 
+  border-color: #e5e7eb; 
+}
+
+/* Discount badge */
+.discount-badge {
+  background: #EF4444;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.02em;
+}
+
+/* Flash sale item red overlay on hover */
+.flash-item:hover .flash-overlay { opacity: 1; }
+.flash-overlay { opacity: 0; transition: opacity 0.2s; }
+
+/* Order timeline */
+.timeline-line { position: absolute; left: 1.25rem; top: 0; bottom: 0; width: 2px; background: #e5e7eb; }
+.timeline-dot-active { background: var(--primary); border-color: var(--primary); }
+.timeline-dot-done { background: var(--success); border-color: var(--success); }
